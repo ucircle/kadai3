@@ -1,0 +1,13 @@
+<%= render 'books/list', new_book: @new_book, user: @user %>
+
+
+<h1>Users</h1>
+
+<% @users.each do |user| %>
+
+<p>name</p>
+<span><%= user.name %></span>
+<p>introduction</p>
+<span><%= user.introduction %></span>
+
+<% end %>

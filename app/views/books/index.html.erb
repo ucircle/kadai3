@@ -1,5 +1,14 @@
-<%= render 'books/list', books: @books, new_book: @new_book, user: @user %>
+<%= render 'books/list', new_book: @new_book, user: @user %>
 
+
+<% if @new_book.errors.any? %>
+  <%= @new_book.errors.count %> errors prohibited this book from being saved:
+  <ul>
+    <% @new_book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
 
 
 <table>
@@ -12,8 +21,8 @@
   <span><%= link_to book.title, "/books/#{book.id}" %></span>
   <p>opinion</p>
   <span><%= book.body %></span>
-  
-  
+
+
 <% end %>
 
 </table>
