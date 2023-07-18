@@ -50,7 +50,7 @@
 <% @books.each do |book| %>
 
    <tr>
-     <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
+     <p>投稿ユーザー画像：<%= image_tag user.get_profile_image(100,100) %></p>
      <td><%= @book.title %></td>
      <td><%= @book.body %></td>
    </tr>

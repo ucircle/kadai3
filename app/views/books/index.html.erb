@@ -1,4 +1,4 @@
-<%= render 'list', books: @books, new_book: @new_book %>
+<%= render 'books/list', books: @books, new_book: @new_book, user: @user %>
 
 
 
@@ -9,7 +9,7 @@
 <%= @books.each do |book| %>
 
   <p>title</p>
-  <span><%= book.title %></span>
+  <span><%= link_to book.title, "/books/#{book.id}" %></span>
   <p>opinion</p>
   <span><%= book.body %></span>
   
