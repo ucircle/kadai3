@@ -7,10 +7,11 @@
 <%= render 'books/list', new_book: @new_book, user: @user %>
 
 
-<% if @new_book.errors.any? %>
-  <%= @new_book.errors.count %> errors prohibited this book from being saved:
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> errors prohibited this book from being saved:
   <ul>
-    <% @new_book.errors.full_messages.each do |message| %>
+    <% @book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
   <% end %>
   </ul>

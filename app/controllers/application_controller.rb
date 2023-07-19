@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!, except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 
@@ -13,6 +14,12 @@ class ApplicationController < ActionController::Base
     flash[:notice] = "Signed out successfully."
     user_session_path
   end
+  
+  def after_sign_up_path_for(resource)
+    flash[:notice] = "Signed up successfully."
+    books_path
+  end
+  
 
   protected
 
