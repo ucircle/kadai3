@@ -11,11 +11,19 @@
   </thead>
 
 <tbody>
+    
+    <h1>Book detail</h1>
 
    <tr>
-     <p>投稿ユーザー画像：<%= image_tag @user.get_profile_image(100,100) %></p>
+     <p><%= image_tag @user.get_profile_image(100,100) %></p>
      <td><%= @book.title %></td>
      <td><%= @book.body %></td>
+     
+     <% if @book.user == current_user %>
+     
+       <%= link_to "edit", edit_book_path(@book.id) %>
+       <%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+     <% end %>
    </tr>
 
 
