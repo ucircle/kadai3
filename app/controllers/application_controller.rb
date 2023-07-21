@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     flash[:notice] = "Signed in successfully."
-    books_path
+    user_path(@user.id)
   end
 
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_up_path_for(resource)
     flash[:notice] = "Signed up successfully."
-    books_path
+    user_path(@user.id)
   end
 
 

@@ -12,8 +12,8 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+    <header class="shadow-sm bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,34 +22,55 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-
             <li class="nav-item">
-              <%= link_to "Users", users_path, class: 'nav-link text-dark' %>
+              <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-house"></i>
+              Home
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "Books", books_path, class: 'nav-link text-dark' %>
+              <%= link_to books_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-book"></i>
+              Books
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Home', user_path(current_user.id), class: 'nav-link text-dark' %>
+              <%= link_to users_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-users"></i>
+              Users
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+              <i class="fa-regular fa-share-from-square"></i>
+              Log out
+              <% end %>
             </li>
 
             <% else %>
             <li class="nav-item">
-              <%= link_to "Home", root_path, class: 'nav-link text-dark' %>
+              <%= link_to root_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-house"></i>
+              Home
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+              <%= link_to about_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-ticket"></i>
+              About
+              <% end %>
             </li>
-            
             <li class="nav-item">
-              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
+              <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-user-plus"></i>
+              Sign up
+              <% end %>
             </li>
-            
             <li class="nav-item">
-              <%= link_to "Log in", new_user_session_path, class: 'nav-link text-dark' %>
+              <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+              <i class="fa-regular fa-pen-to-square"></i>
+              Log in
+              <% end %>
             </li>
             <% end %>
             </ul>
@@ -57,13 +78,15 @@
         </div>
       </nav>
     </header>
+
     <main class="mb-auto">
     <div class="container">
     <%= yield %>
     </div>
     </main>
+
     <footer>
-      <div class="container mt-5">
+      <div class="text-center">
       <p>CopyRight Infratop.inc</p>
       </div>
     </footer>
