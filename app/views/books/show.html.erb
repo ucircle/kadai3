@@ -2,35 +2,36 @@
   <%= flash[:notice] %>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-4">
 <%= render 'books/list', new_book: @new_book, user: @user %>
-
-<h1>Books</h1>
- <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>opinion</th>
-    </tr>
-
-  </thead>
+    </div>
+<div class="col-8">
+<table class="table">
+<thead>
+  <h1>Book detail</h1>
+</thead>
 
 <tbody>
 
-    <h1>Book detail</h1>
-
    <tr>
-     <p><%= image_tag @user.get_profile_image(100,100) %></p>
-     <td><%= @book.title %></td>
+     <td><%= link_to image_tag @user.get_profile_image(100,100) %><br>
+     <%= @user.name %></td>
+     <td><%= link_to @book.title, book_path(@book.id) %></td>
      <td><%= @book.body %></td>
 
      <% if @book.user == current_user %>
 
-       <%= link_to "edit", edit_book_path(@book.id) %>
-       <%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+       <td><%= link_to "edit", edit_book_path(@book.id), class:"btn btn-success" %></td>
+       <td><%= link_to "destroy", book_path(@book.id), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
      <% end %>
    </tr>
 
 
-</tbody>
+  </tbody>
 
-</table>
+  </table>
+  </div>
+  </div>
+</div>
