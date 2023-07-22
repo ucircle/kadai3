@@ -11,15 +11,21 @@
 
 <%= form_with model: @book do |f| %>
 
-  <h4>title</h4>
-  <%= f.text_field :title %>
+  <div class="form-group">
+    <h4>title</h4>
+    <%= f.text_field :title %>
+  </div>
 
-  <h4>opinion</h4>
-  <%= f.text_area :body %>
+  <div class="form-group">
+    <h4>opinion</h4>
+    <%= f.text_area :body %>
+  </div>
 
-  <button type="submit" class="btn btn-success">Update Book</button>
+  <div class="form-group">
+    <button type="submit" class="btn btn-success">Update Book</button>
+  </div>
 
-<%= link_to "Show", book_path(@book.id) %>
-<%= link_to "Back", books_path %>
+  <div class="form-group"><%= link_to "Show", book_path(@book.id) %> |
+  <%= link_to "Back", books_path %></div>
 
 <% end %>
