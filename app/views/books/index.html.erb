@@ -4,22 +4,22 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-4">
-<%= render 'books/list', new_book: @new_book, user: @user %>
+    <div class="col-md-3">
+     <%= render 'books/list', new_book: @new_book, user: @user %>
     </div>
 
 
-<% if @new_book.errors.any? %>
+  <% if @new_book.errors.any? %>
   <%= @new_book.errors.count %> errors prohibited this book from being saved:
   <ul>
     <% @new_book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
   <% end %>
   </ul>
-<% end %>
+  <% end %>
 
 
-  <div class="col-8">
+  <div class="col-md-8 offset-md-1">
     <h1>Books</h1>
     <table class="table">
       <thead>
@@ -34,9 +34,12 @@
     <% @books.each do |book| %>
       <tr>
 
-      <td><%= image_tag book.user.get_profile_image(100,100) %></td>
-
-      <td><%= link_to book.title, "/books/#{book.id}" %></td>
+      <td><%= link_to user_path(book.user_id) do %>
+        <%= image_tag book.user.get_profile_image(100,100) %></td>
+        <% end %>
+      <td><%= link_to "/books/#{book.id}" do %>
+        <%= book.title %></td>
+        <% end %>
 
       <td><%= book.body %></td>
       </tr>
